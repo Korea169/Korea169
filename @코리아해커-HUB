@@ -1,0 +1,360 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "KoreaHacker HUB V1.0",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "Loading...",
+   LoadingSubtitle = "by:코리아해커",
+   Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "KoreaHacker HUB KEY🔑",
+      Subtitle = "KoreaHacker HUB에 오신것을 환영합니다!",
+      Note = "키는 저희 디스코드에서 얻으실수 있습니다!", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"flower"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local Tab = Window:CreateTab("기본 기능", 4483362458) -- Title, Image
+
+local Section = Tab:CreateSection("스피드 및 점프파워 조절,fly Gui,Esp 등등")
+
+local Slider = Tab:CreateSlider({
+   Name = "플레이어 이동 속도",
+   Range = {0, 300},
+   Increment = 1,
+   Suffix = "속도",
+   CurrentValue = 16,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   end,
+})
+
+local Slider = Tab:CreateSlider({
+   Name = "플레이어 점프파워",
+   Range = {0, 500},
+   Increment = 1,
+   Suffix = "점프파워",
+   CurrentValue = 50,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "fly Gui 실행",
+   Callback = function()
+   loadstring(game:HttpGet('https://pastebin.com/raw/eR4bgsRp'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Esp 실행",
+   Callback = function()
+   loadstring(game:HttpGet"https://pastebin.com/raw/rSUGN1fK")()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Infinity Yard 실행",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+   end,
+})
+
+local Tab = Window:CreateTab("게임별 기능들", 4483362458) -- Title, Image
+
+local Section = Tab:CreateSection("칼 있는게임")
+
+local Button = Tab:CreateButton({
+   Name = "올킬(칼 있어야함)",
+   Callback = function()
+   local range = 1000 local player = game:GetService("Players").LocalPlayer local function isFriendWith(player1, player2) return player1:IsFriendsWith(player2.UserId) end game:GetService("RunService").RenderStepped:Connect(function() local players = game.Players:GetPlayers() for i = 2, #players do local otherPlayer = players[i] local character = otherPlayer.Character if not isFriendWith(player, otherPlayer) then local tool = player.Character and player.Character:FindFirstChildOfClass("Tool") if tool and tool:FindFirstChild("Handle") then tool:Activate() for _, part in next, character:GetChildren() do if part:IsA("BasePart") then firetouchinterest(tool.Handle, part, 0) firetouchinterest(tool.Handle, part, 1) end end end end end end)
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "칼 리치",
+   Callback = function()
+   loadstring(game:HttpGet('https://pastebin.com/raw/tsbVWZdP'))()
+   end,
+})
+
+local Section = Tab:CreateSection("프리즌 라이프")
+
+local Button = Tab:CreateButton({
+   Name = "킬 아우라",
+   Callback = function()
+   mainRemotes = game.ReplicatedStorage
+meleeRemote = mainRemotes['meleeEvent']
+
+killAura = true
+
+contextactionservice = game.ContextActionService
+
+function toggleKillAura(actionName, inputState, inputObject)
+print('Doing the action : ' .. actionName)
+if inputState == Enum.UserInputState.Begin then
+if killAura == true then
+killAura = false
+else
+killAura = true
+end
+end
+end
+
+contextactionservice:BindAction('ToggleKillAura', toggleKillAura, false, Enum.KeyCode.K)
+
+while wait() do
+if killAura == true then
+for _, plr in pairs (game:GetService('Players'):GetChildren()) do
+if plr.Name ~= game.Players.LocalPlayer.Name then
+meleeRemote:FireServer(plr)
+end
+end
+end
+            end
+   end,
+})
+
+local Section = Tab:CreateSection("블레이드 볼")
+
+local Button = Tab:CreateButton({
+   Name = "자동공격",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/nqxlOfc/SlzAX17vGCub7iRKVmJid61Bg/main/KwKVzV5SgcFBd9fnpLr4lKCg6.lua"))()
+   end,
+})
+
+local Section = Tab:CreateSection("타워게임")
+
+local Button = Tab:CreateButton({
+   Name = "맵 테러",
+   Callback = function()
+   --[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local Workspace = game:GetService("Workspace")
+ 
+local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+ 
+local Folder = Instance.new("Folder", Workspace)
+local Part = Instance.new("Part", Folder)
+local Attachment1 = Instance.new("Attachment", Part)
+Part.Anchored = true
+Part.CanCollide = false
+Part.Transparency = 1
+ 
+if not getgenv().Network then
+    getgenv().Network = {
+        BaseParts = {},
+        Velocity = Vector3.new(14.46262424, 14.46262424, 14.46262424)
+    }
+ 
+    Network.RetainPart = function(Part)
+        if typeof(Part) == "Instance" and Part:IsA("BasePart") and Part:IsDescendantOf(Workspace) then
+            table.insert(Network.BaseParts, Part)
+            Part.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
+            Part.CanCollide = false
+        end
+    end
+ 
+    local function EnablePartControl()
+        LocalPlayer.ReplicationFocus = Workspace
+        RunService.Heartbeat:Connect(function()
+            sethiddenproperty(LocalPlayer, "SimulationRadius", math.huge)
+            for _, Part in pairs(Network.BaseParts) do
+                if Part:IsDescendantOf(Workspace) then
+                    Part.Velocity = Network.Velocity
+                end
+            end
+        end)
+    end
+ 
+    EnablePartControl()
+end
+ 
+local function ForcePart(v)
+    if v:IsA("Part") and not v.Anchored and not v.Parent:FindFirstChild("Humanoid") and not v.Parent:FindFirstChild("Head") and v.Name ~= "Handle" then
+        for _, x in next, v:GetChildren() do
+            if x:IsA("BodyAngularVelocity") or x:IsA("BodyForce") or x:IsA("BodyGyro") or x:IsA("BodyPosition") or x:IsA("BodyThrust") or x:IsA("BodyVelocity") or x:IsA("RocketPropulsion") then
+                x:Destroy()
+            end
+        end
+        if v:FindFirstChild("Attachment") then
+            v:FindFirstChild("Attachment"):Destroy()
+        end
+        if v:FindFirstChild("AlignPosition") then
+            v:FindFirstChild("AlignPosition"):Destroy()
+        end
+        if v:FindFirstChild("Torque") then
+            v:FindFirstChild("Torque"):Destroy()
+        end
+        v.CanCollide = false
+        local Torque = Instance.new("Torque", v)
+        Torque.Torque = Vector3.new(100000, 100000, 100000)
+        local AlignPosition = Instance.new("AlignPosition", v)
+        local Attachment2 = Instance.new("Attachment", v)
+        Torque.Attachment0 = Attachment2
+        AlignPosition.MaxForce = 9999999999999999
+        AlignPosition.MaxVelocity = math.huge
+        AlignPosition.Responsiveness = 200
+        AlignPosition.Attachment0 = Attachment2
+        AlignPosition.Attachment1 = Attachment1
+    end
+end
+ 
+local blackHoleActive = true
+ 
+local function toggleBlackHole()
+    blackHoleActive = not blackHoleActive
+    if blackHoleActive then
+        for _, v in next, Workspace:GetDescendants() do
+            ForcePart(v)
+        end
+ 
+        Workspace.DescendantAdded:Connect(function(v)
+            if blackHoleActive then
+                ForcePart(v)
+            end
+        end)
+ 
+        spawn(function()
+            while blackHoleActive and RunService.RenderStepped:Wait() do
+                Attachment1.WorldCFrame = humanoidRootPart.CFrame
+            end
+        end)
+    end
+end
+ 
+local function createControlButton()
+    local screenGui = Instance.new("ScreenGui")
+    local button = Instance.new("TextButton")
+ 
+    screenGui.Name = "BlackHoleControlGUI"
+    screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+ 
+    button.Name = "ToggleBlackHoleButton"
+    button.Size = UDim2.new(0, 200, 0, 50)
+    button.Position = UDim2.new(0.5, -100, 0, 100)
+    button.Text = "시작하려면 클릭하세요!"
+    button.Parent = screenGui
+ 
+    button.MouseButton1Click:Connect(function()
+        toggleBlackHole()
+        if blackHoleActive then
+            button.Text = "테러 잠시 멈추기"
+        else
+            button.Text = "맵테러 계속 진행하기"
+        end
+    end)
+end
+ 
+createControlButton()
+toggleBlackHole()
+   end,
+})
+
+local Section = Tab:CreateSection("총게임")
+
+local Button = Tab:CreateButton({
+   Name = "에임봇",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Mick-gordon/Hyper-Escape/main/DeleteMobCheatEngine.lua"))()
+   end,
+})
+
+local Tab = Window:CreateTab("게임별 스크립트 모음", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "살인의 미스테리2",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Joystickplays/psychic-octo-invention/main/yarhm.lua", false))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "이베이드",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/main/TbaoHubEvade"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "먼지같은 여행",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/artemy133563/Utilities/main/ADustyTrip",true))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "프리즌 라이프",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/main/TbaohubPrisonLife"))()
+   end,
+})
+
+local Tab = Window:CreateTab("HUB 정보", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "HUB 이름:KoreaHacker HUB",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "HUB 개발자:코리아해커",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "HUB 개발일:2025년 1월 14일 화요일",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "HUB 업데이트일:(아직 업데이트 없음)",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "HUB 버전:1.0",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+
+--KoreaHacker HUB를 이용해주셔서 감사합니다! 좋은하루 되세요! 스크립트 끝!
